@@ -1,137 +1,218 @@
-.data
-	input: .space 31
-	list: .space 310
-	
-	result: .asciiz "Ket qua: "
-	input_message: .asciiz "Nhap vao xau (duoi 30 ki tu): "
-	not_palidrome: .asciiz "Khong phai la xau doi xung !\n"
-	palidrome: .asciiz "Xau doi xung\n"
-	too_long: .asciiz "Xau qua dai!\n"
-	stored: .asciiz "Xau da duoc luu vao bo nho !\n"
-	full_memory: .asciiz "Day bo nho !\n"
-	confirm: .asciiz "Ban co muon tiep tuc ?\n"
+.data 
+	Input: .space 51
+	StringList: .space 1000
+
+	Result: .asciiz "Ket qua:\n"
+	Input_string_message: .asciiz "Nhap vao xau (duoi 50 ki tu): "
+	Not_is_palidrome: .asciiz "Khong phai xau doi xung"
+	Is_palindrome: .asciiz "La xau doi xung"
+	Stored: .asciiz "Xau da duoc luu vao bo nho\n"
+	Full_memory: .asciiz "Day bo nho!!!\n"
+	Confirm: .asciiz "Ban co muon tiep tuc?\n"
+	Store_string: .asciiz "Da luu xau vao bo nho!\n"
+	Too_long: .asciiz "Xau qua dai!"
 	ERROR: .asciiz "ERROR!!!\n"
-	CONFIRM_MESSAGE: .asciiz "Do you want to continue?\n"
-	SPACE: .asciiz ""
+	Space: .asciiz ""
 .text
 main:
-
-#Nhận một xâu từ người dùng
+#--------------------------------------------------------------------------------------------
+# @brief	Nhận một xâu từ người dùng
+#--------------------------------------------------------------------------------------------
 getString:
 	li $v0, 54
-	la $a0, input_message
-	la $a1, input
-	la $a2, 31
+	la $a0, Input_string_message
+	la $a1, Input
+	la $a2, 51
 	syscall
-
-#Lấy độ dài của xâu 
+#--------------------------------------------------------------------------------------------
+# @brief		Tìm độ dài của 1 xâu
+# @param[in]	$s0	Địa chỉ của xâu cần tìm độ dài
+# @param[out]	$s1	Độ dài của xâu
+# @param[out]	$t1	Chỉ số của kí tự cuối cùng (Tính từ 0)
+#--------------------------------------------------------------------------------------------
 getLength:
-	la $s0, input
-	add $s1, $0, $0		#$s1 = length (i) = 0
-checkChar:
-	add $s2, $s0, $s1	#$s2 = Address(string[0]+i)
-	lb $s3, 0($s2)
-	beq $s3, $0, end_str
-	addi $s1, $s1, 1
-	j checkChar
-end_str:
-
-#Kiểm tra độ dài của xâu
+	la $s0, Input
+	addi $s1, $0, 0	
+	addi $t1, $0, 0	
+	iteration:
+		add $t2, $s0, $t1
+		lb $t3, 0($t2) 	
+		
+		beq $t3, $0,finishGetLength 
+		
+		addi $s7, $0, 10
+		beq $t3, $s7, updateString
+		
+		addi $s1, $s1, 1
+		addi $t1, $t1, 1
+		j iteration
+	updateString:
+		add $t1, $s0, $t1
+		sb $0, 0($t1)
+	finishGetLength:
+		add $t1, $0, $s1 	
+		addi $t1, $t1, -1  	
+#--------------------------------------------------------------------------------------------
+# @brief		Kiểm tra độ dài xâu có lớn hơn 49 không
+# @param[in]	$s1	Độ dài của xâu Input
+# @param[out]		In ra thông báo nếu xâu dài hơn 49
+#--------------------------------------------------------------------------------------------		
 isTooLongString:
-	slti $t2, $s1, 30	#$s1 > 30 ? 
+	slti $t2, $s1, 50
 	beq $t2, $zero, putErrorStringMessage
-#kiểm tra xâu đã được lưu chưa
-isStored:
-	la $s2, list
-	addi $t2, $zero, 0	#t2 = j = 0
-	addi $t8, $zero, 0	#t8 = check = 0
-	traverseList:
-		add $t5, $s2, $t2	#t5 = List + j
+#--------------------------------------------------------------------------------------------
+# @brief		Kiểm tra xem xâu nhập vào có trong StringList không 
+# @param[in]	$s0	Địa chỉ của Input
+# @param[in]	$s2	Địa chỉ của StringList
+# @param[out]	$t1	Chỉ số của kí tự cuối cùng của Input (Tính từ 0) 
+# @param[out]	$t8	Giá trị của 0 hoặc 1, 1 là Input đã có trong StringList, 0 là chưa		
+#--------------------------------------------------------------------------------------------
+isStoredInMemory:		
+	la $s2, StringList
+	addi $t2, $zero, 0	
+	addi $t8, $zero, 0	
+		traverseRecentStringList:
+		add $t5, $s2, $t2 	
 		lb $t5, 0($t5)
-		beq $t5, $zero, finish_traverseList
-		slti $t4, $t2, 310
-		beq $t4, $zero, finish_traverseList
-		addi $t3, $zero, 0	#t3 = k = 0
-	compareString:	
-		#compare char of 2 string
-		add $t6, $s2, $t2	#t6 = List + j
-		add $t6, $t6, $t3	#t6 = t6 + k
-		lb $t6, 0($t6)		#t6 = List[j+k]
-		add $t7, $s0, $t3	#t7 = input + k
-		lb $t7, 0($t7)		#t7 = input[k]
-		bne $t6, $t7, notEqual	#input[k]!=List[j+k]='\0'->not equal
-		beq $t6, $zero, isEqual #input[k]=List[j+k]='\0'->equal
-		addi $t3, $t3, 1	#k++
-		j	compareString
+		beq $t5, $zero, finishTraverseRecentStringList
+		
+		slti $t4, $t2, 1000
+		beq $t4, $zero, finishTraverseRecentStringList
+		addi $t3, $zero, 0	
+		
+		compareString:	
+			add $t6, $s2, $t2	
+			add $t6, $t6, $t3	
+			lb $t6, 0($t6)		
+			add $t7, $s0, $t3	
+			lb $t7, 0($t7)		
+			bne $t6, $t7, notEqual	
+			beq $t6, $zero, isEqual 
+			addi $t3, $t3, 1	
+			j	compareString
 			
-		isEqual:
-			addi $t8, $zero, 1
-			j finish_traverseList
-		notEqual: 
-			addi $t2, $t2, 50
-			j traverseList
-	finish_traverseList:
-	#if t8 = 1, thong bao da co string nay trong memory	
+			isEqual:
+				addi $t8, $zero, 1
+				j finishTraverseRecentStringList
+			notEqual: 
+				addi $t2, $t2, 50
+				j traverseRecentStringList
+			
+	finishTraverseRecentStringList:
 	bne $t8, $zero, putStringIsStoredMessage
-
-
+			
+#--------------------------------------------------------------------------------------------
+# @brief		Kiểm tra xâu Input có phải xâu đối xứng không 
+# @param[in]	$s0	Địa chỉ của Input 
+# @param[in]	$s1	Độ dài của Input 
+# @param[in]	$t1	Chỉ số của kí tự cuối cùng của Input (Tính từ 0)
+# @param[out]		Thông báo in ra màn hình
+#--------------------------------------------------------------------------------------------		
 add $t1, $zero, $s1
 addi $t1, $t1, -1 
-addi $t2, $zero, 0	#t2 = j = 0
+addi $t2, $zero, 0	
 checkPalindrome:		
 		
-	add $t3, $s0, $t2	#t3 = input + t2
-	lb $t3, 0($t3)		#t3 = input[0]
+	add $t3, $s0, $t2	
+	lb $t3, 0($t3)		
 	
-	add $t4, $s0, $t1	#t4 = input + t1
-	lb $t4, 0($t4)		#t4 = input[length]
+	add $t4, $s0, $t1	
+	lb $t4, 0($t4)		
 	bne $t3, $t4, notIsPalindrome
-	addi $t1, $t1, -1 	#i--
-	addi $t2, $t2, 1	#j++
-	slt $t5, $t2, $t1	#j < i?
+	addi $t1, $t1, -1 	
+	addi $t2, $t2, 1	
+	slt $t5, $t2, $t1	
 	beq $t5, $zero, isPalindrome
 	j checkPalindrome
 	
 	notIsPalindrome:
-		la $a1, not_palidrome
+		la $a1, Not_is_palidrome
 		li $v0, 59
-		la $a0, RESULT
+		la $a0, Result
 		syscall
 		j confirmDialog
-		isPalindrome:
-		la $a1, palidrome
+	isPalindrome:
+		la $a1, Is_palindrome
 		li $v0, 59
-		la $a0, result
+		la $a0, Result
 		syscall
 		j storeStringInMemory
-		
+#--------------------------------------------------------------------------------------------
+# @brief		Lưu trữ Input vào StringList 
+# @param[in]	$s0	Địa chỉ của Input
+# @param[in] 	$s2	Địa chỉ của StringList
+# @param[in]	$s1	Độ dài của Input
+# @param[in]	$t1	Chỉ số của kí tự cuối cùng của Input (Tính từ 0)
+# @param[out]		Thông báo đã lưu xâu hoặc lỗi do bộ nhớ đầy 
+#--------------------------------------------------------------------------------------------	
+storeStringInMemory:
+	addi $t1, $s1, -1 	
+	addi $t2, $zero, 0 	
+	addi $t6, $zero, 0 	
+	findLastString:
+		slti $t4, $t2, 1000
+		beq $t4, $zero, putFullMemoryMessage	
+		add $t3, $s2, $t2	
+		lb $t3, 0($t3)
+		beq $t3, $zero, copyString 
+		addi $t2, $t2, 50	
+		j findLastString
+	copyString:
+		slt $t5, $t1, $t6
+		bne $t5, $zero, putFinishedStoreString
+		add $t7, $t2, $t6	
+		add $t7, $t7, $s2	
+		add $t8, $t6, $s0	
+		lb  $t8, 0($t8)
+		sb $t8, 0($t7)					
+		addi $t6, $t6, 1	
+		j copyString
+#--------------------------------------------------------------------------------------------
+# @brief		Hiện ra các thông báo
+# @param[out]		In thông báo ra màn hình 
+#--------------------------------------------------------------------------------------------	
+putFinishedStoreString:	
+	li $v0, 4
+	la $a0, Store_string
+	syscall
+	j confirmDialog
 	
-
+putStringIsStoredMessage:
+	li $v0, 59
+	la $a0, Stored
+	la $a1, Space
+	syscall
+	j confirmDialog	
+	
+	li $v0, 59
+	la $a1, Is_palindrome
+	la $a0, Result
+	syscall
+		
+	j confirmDialog			
+		
+putFullMemoryMessage:
+	li $v0, 4
+	la $a0, Full_memory
+	syscall
+	j confirmDialog
+	
 putErrorStringMessage:
-	la $a1, too_long
+	la $a1, Too_long
 	li $v0, 59
 	la $a0, ERROR
 	syscall
-	#j main
-putStringIsStoredMessage:
-	li $v0, 59
-	la $a0, stored
-	la $a1, SPACE
-	syscall
-	
-	li $v0, 59
-	la $a1, palidrome
-	la $a0, result
-	syscall
-		
-	j confirmDialog	
+	j main
+#--------------------------------------------------------------------------------------------
+# @brief		Hỏi ý kiến người dùng có muốn nhập tiếp không ? 
+#			Ấn yes sẽ nhập tiếp
+# @param[out]	$a0	0: Yes
+#			1: No
+#			2: Cancel
+#--------------------------------------------------------------------------------------------		
 confirmDialog:
 	li $v0, 50
-	la $a0, CONFIRM_MESSAGE
+	la $a0, Confirm
 	syscall
-	beq $a0, $zero, main	
-end:
-	
-	
-	
+	beq $a0, $zero, main
 	

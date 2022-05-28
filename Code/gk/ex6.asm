@@ -1,12 +1,15 @@
 .data
 	A: .word 2, 0, 2, 0, 5, 2, 2, 7
+	n: .word 8
 	Message: .asciiz "Tich lon nhat la: "
 	Output: .asciiz "\nHai so: "
 	Comma: .asciiz ", "
 .text
 	la $s0, A		#load địa chỉ của mảng A
+	la $s2, n
+	lw $s2, 0($s2)
 	addi $s1, $0, -1 	#i
-	addi $s2, $0, 6 	#n-2
+	addi $s2, $s2, -2 	#n-2
 	addi $s3, $0, 1 	#step
 	addi $s4, $0, 0 	#product
 	j loop

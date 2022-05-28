@@ -1,18 +1,40 @@
 #include<stdio.h>
+#include<stdlib.h>
 #include<string.h>
-int main(){
-    int check = 1;
-    char 
-    char str[100];
-    scanf("%s", str);
-    for(int i=0; i<strlen(str); i++){
-        if(str[i]!=str[strlen(str)-1-i]){
-            check = 0;
+#include<stdbool.h>
+void getString(char *input){
+    scanf("%s", input);
+    printf("%s\n", input);
+}
+int getLength(char *input){
+    int i = 0;
+    int length = 0;
+    while(input[i] != 0){
+        if(input[i] == 10){
+            input[i] = 0;
             break;
-        }
+        } //Điều này không cần thiết trong C
+        ++i;
+        ++length;
     }
+    i = length - 1; //vị trí tại phần tử cuối cùng
+    return length;
+}
+bool isTooLongString(char *input){
+    int check = getLength(input) - 50;
     if(check == 0){
-        printf("Khong doi xung\n");
+        printf("Xau qua dai!\n");
     }
-    else printf("Doi xung\n");
+}
+bool isStoredInMemory(char *input, char *stringlist){
+    ;
+}
+bool checkPalindrome(char *input){
+    
+}
+int main(){
+    char input[51];
+    char stringlist[1000];
+    getString(input);
+    printf("%d", getLength(input));
 }
