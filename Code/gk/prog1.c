@@ -3,6 +3,7 @@
 #include<string.h>
 #include<stdbool.h>
 void getString(char *input){
+    printf("Nhap xau dau vao: ");
     scanf("%s", input);
 }
 int getLength(char *input){
@@ -21,12 +22,22 @@ int getLength(char *input){
 }
 bool isTooLongString(char *input){
     int check = getLength(input) - 50;
-    if(check == 0){
+    if(check >= 0){
         printf("Xau qua dai!\n");
+        return true;
     }
+    return false;
 }
 bool isStoredInMemory(char *input, char *stringlist){
-    ;
+    int count = 0;
+    for(int i=0; i<1000; i+=50){
+        count = 0;
+        for(int j=0; j<strlen(input); j++){
+            if(input[j] == stringlist[i+j]) ++count;
+        }
+        if(count == strlen(input)) return true;
+    }
+    return false;
 }
 bool checkPalindrome(char *input){
     int length = getLength(input) - 1;
@@ -53,11 +64,17 @@ void storeStringInMemory(char *input, char *stringlist){
     else printf("Day bo nho!\n");
 }
 int main(){
+    int in = 1;
     char *input = calloc(50, sizeof(char));
     char *stringlist = calloc(1000, sizeof(char));
-    getString(input);
-    storeStringInMemory(input, stringlist);
-    printf("%d\n", getLength(input));
+    while(in && strlen(stringlist) < 1000){
+        getString(input);
+        if(isTooLongString(input)) continue;
+        if(checkPalindrome(input) && !isStoredInMemory(input, stringlist)){
+            storeStringInMemory(input, stringlist);
+        }
+        printf("Ban co muon tiep tuc khong ?: ");
+        scanf("%d", &in);
+    }
     printf("%s\n", stringlist);
-    printf("%ld\n", strlen(stringlist));
 }
