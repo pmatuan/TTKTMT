@@ -13,12 +13,24 @@
 	addi $s3, $0, 1 	#step
 	addi $s4, $0, 0 	#product
 	j loop
+#--------------------------------------------------------------------------------------------
+# @brief		Khởi tạo giá trị cho tích lớn nhất
+# @param[in]	$a1	Phần tử thứ nhất của mảng 
+# @param[in]	$a2	Phần tử thứ hai của mảng 
+# @param[out]	$s4	Giá trị tích của hai phần tử trong mảng	
+#--------------------------------------------------------------------------------------------
 init:
 	mult $a1, $a2		#Tích $a1 và $a2, được lưu vào thanh ghi $lo 
 	mflo $s4		#Load giá trị của tích từ $lo vào $s4
 	addi $t3, $a1, 0	#Lưu vết của phần tử thứ nhất 
 	addi $t4, $a2, 0	#Lưu vết của phần tử thứ 2
 	j check			#Kiểm tra điều kiện vòng lặp
+#--------------------------------------------------------------------------------------------
+# @brief		Vòng lặp tìm giá trị cho tích lớn nhất
+# @param[in]	$a1	Phần tử hiện thời của mảng 
+# @param[in]	$a2	Phần tử kế tiếp của mảng 
+# @param[out]	$s4	Giá trị tích của hai phần tử trong mảng	
+#--------------------------------------------------------------------------------------------
 loop:
 	add $s1, $s1, $s3	#i = i + step
 	add $t1, $s1, $s1	#t1 = 2*s1
