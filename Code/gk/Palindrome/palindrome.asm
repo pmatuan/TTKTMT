@@ -15,21 +15,21 @@
 	Space: .asciiz ""
 .text
 main:
-#############################################################################################
-# Function	Nhận một xâu từ người dùng
-#############################################################################################
+#--------------------------------------------------------------------------------------------
+# @brief	Nhận một xâu từ người dùng
+#--------------------------------------------------------------------------------------------
 getString:
 	li $v0, 54
 	la $a0, Input_string_message
 	la $a1, Input
 	la $a2, 51
 	syscall
-#############################################################################################
-# Function		Tìm độ dài của 1 xâu
-# Input	$s0	Địa chỉ của xâu cần tìm độ dài
-# Output	$s1	Độ dài của xâu
-# Output	$t1	Chỉ số của kí tự cuối cùng (Tính từ 0)
-#############################################################################################
+#--------------------------------------------------------------------------------------------
+# @brief		Tìm độ dài của 1 xâu
+# @param[in]	$s0	Địa chỉ của xâu cần tìm độ dài
+# @param[out]	$s1	Độ dài của xâu
+# @param[out]	$t1	Chỉ số của kí tự cuối cùng (Tính từ 0)
+#--------------------------------------------------------------------------------------------
 getLength:
 	la $s0, Input
 	addi $s1, $0, 0	#s1 = length = 0
@@ -52,21 +52,21 @@ getLength:
 	finishGetLength:
 		add $t1, $0, $s1 	#i = length
 		addi $t1, $t1, -1  	#i = length - 1 (bỏ đi \0)
-#############################################################################################
-# Function		Kiểm tra độ dài xâu có lớn hơn 49 không
-# Input	$s1	Độ dài của xâu Input
-# Output		In ra thông báo nếu xâu dài hơn 49
-#############################################################################################		
+#--------------------------------------------------------------------------------------------
+# @brief		Kiểm tra độ dài xâu có lớn hơn 49 không
+# @param[in]	$s1	Độ dài của xâu Input
+# @param[out]		In ra thông báo nếu xâu dài hơn 49
+#--------------------------------------------------------------------------------------------		
 isTooLongString:
 	slti $t2, $s1, 50
 	beq $t2, $zero, putErrorStringMessage
-#############################################################################################
-# Function		Kiểm tra xem xâu nhập vào có trong StringList không 
-# Input	$s0	Địa chỉ của Input
-# Input	$s2	Địa chỉ của StringList
-# Output	$t1	Chỉ số của kí tự cuối cùng của Input (Tính từ 0) 
-# Output	$t8	Giá trị của 0 hoặc 1, 1 là Input đã có trong StringList, 0 là chưa		
-#############################################################################################
+#--------------------------------------------------------------------------------------------
+# @brief		Kiểm tra xem xâu nhập vào có trong StringList không 
+# @param[in]	$s0	Địa chỉ của Input
+# @param[in]	$s2	Địa chỉ của StringList
+# @param[out]	$t1	Chỉ số của kí tự cuối cùng của Input (Tính từ 0) 
+# @param[out]	$t8	Giá trị của 0 hoặc 1, 1 là Input đã có trong StringList, 0 là chưa		
+#--------------------------------------------------------------------------------------------
 isStoredInMemory:		
 	la $s2, StringList
 	addi $t2, $zero, 0	#t2 = j = 0
@@ -100,17 +100,17 @@ isStoredInMemory:
 				j traverseRecentStringList
 			
 	finishTraverseRecentStringList:
-#############################################################################################
+#--------------------------------------------------------------------------------------------
 	#if t8 = 1, in ra thông báo string đã có trong bộ nhớ	
 	bne $t8, $zero, putStringIsStoredMessage
 			
-#############################################################################################
-# Function		Kiểm tra xâu Input có phải xâu đối xứng không 
-# Input	$s0	Địa chỉ của Input 
-# Input	$s1	Độ dài của Input 
-# Input	$t1	Chỉ số của kí tự cuối cùng của Input (Tính từ 0)
-# Output		Thông báo in ra màn hình
-#############################################################################################		
+#--------------------------------------------------------------------------------------------
+# @brief		Kiểm tra xâu Input có phải xâu đối xứng không 
+# @param[in]	$s0	Địa chỉ của Input 
+# @param[in]	$s1	Độ dài của Input 
+# @param[in]	$t1	Chỉ số của kí tự cuối cùng của Input (Tính từ 0)
+# @param[out]		Thông báo in ra màn hình
+#--------------------------------------------------------------------------------------------	
 add $t1, $zero, $s1
 addi $t1, $t1, -1 
 addi $t2, $zero, 0	#t2 = j = 0
@@ -140,14 +140,14 @@ checkPalindrome:
 		la $a0, Result
 		syscall
 		j storeStringInMemory
-#############################################################################################
-# Function		Lưu trữ Input vào StringList 
-# Input	$s0	Địa chỉ của Input
-# Input 	$s2	Địa chỉ của StringList
-# Input	$s1	Độ dài của Input
-# Input	$t1	Chỉ số của kí tự cuối cùng của Input (Tính từ 0)
-# Output		Thông báo đã lưu xâu hoặc lỗi do bộ nhớ đầy 
-#############################################################################################	
+#--------------------------------------------------------------------------------------------
+# @brief		Lưu trữ Input vào StringList 
+# @param[in]	$s0	Địa chỉ của Input
+# @param[in] 	$s2	Địa chỉ của StringList
+# @param[in]	$s1	Độ dài của Input
+# @param[in]	$t1	Chỉ số của kí tự cuối cùng của Input (Tính từ 0)
+# @param[out]		Thông báo đã lưu xâu hoặc lỗi do bộ nhớ đầy 
+#--------------------------------------------------------------------------------------------
 storeStringInMemory:
 	addi $t1, $s1, -1 	#t1 = i = length - 1
 	addi $t2, $zero, 0 	#t2 = j = 0
@@ -170,10 +170,10 @@ storeStringInMemory:
 		sb $t8, 0($t7)		#StringList[j+k] = Input[k]			
 		addi $t6, $t6, 1	#k++
 		j copyString
-#############################################################################################
-# Function		Hiện ra các thông báo
-# Output		In thông báo ra màn hình 
-#############################################################################################	
+#--------------------------------------------------------------------------------------------
+# @brief		Hiện ra các thông báo
+# @param[out]		In thông báo ra màn hình 
+#--------------------------------------------------------------------------------------------	
 putFinishedStoreString:	
 	li $v0, 4
 	la $a0, Store_string
@@ -206,13 +206,13 @@ putErrorStringMessage:
 	la $a0, ERROR
 	syscall
 	j main
-#############################################################################################
-# Function		Hỏi ý kiến người dùng có muốn nhập tiếp không ? 
+#--------------------------------------------------------------------------------------------
+# @brief		Hỏi ý kiến người dùng có muốn nhập tiếp không ? 
 #			Ấn yes sẽ nhập tiếp
-# Output	$a0	0: Yes
+# @param[out]	$a0	0: Yes
 #			1: No
 #			2: Cancel
-#############################################################################################		
+#--------------------------------------------------------------------------------------------			
 confirmDialog:
 	li $v0, 50
 	la $a0, Confirm
