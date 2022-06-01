@@ -1,6 +1,6 @@
 .data
-	string:	.space 20
-	reverse: .space 20
+	string:	.space 5
+	reverse: .space 5
 	Message1:	.asciiz "Nhap xau: "
 	Message2:	.asciiz "Xau dao nguoc la: "
 .text
@@ -9,7 +9,7 @@ get_string:
 	li $v0, 54
 	la $a0, Message1
 	la $a1, string
-	la $a2, 20
+	la $a2, 5
 	syscall
 get_length:
 	la $a0, string
