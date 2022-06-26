@@ -1,6 +1,7 @@
 \contentsline {section}{\numberline {1}Assignment 3}{2}{section.1}%
 \contentsline {subsection}{\numberline {1.1}Phân tích đề bài}{2}{subsection.1.1}%
 \contentsline {subsection}{\numberline {1.2}Triển khai MIPS}{2}{subsection.1.2}%
-\contentsline {section}{\numberline {2}Assignment 4}{3}{section.2}%
-\contentsline {subsection}{\numberline {2.1}Phân tích đề bài}{3}{subsection.2.1}%
-\contentsline {subsection}{\numberline {2.2}Triển khai MIPS}{3}{subsection.2.2}%
+\contentsline {subsubsection}{\numberline {1.2.1}GO}{2}{subsubsection.1.2.1}%
+\contentsline {section}{\numberline {2}Assignment 4}{6}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Phân tích đề bài}{6}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Triển khai MIPS}{6}{subsection.2.2}%

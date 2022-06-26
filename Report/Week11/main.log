@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.4.26)  16 JUN 2022 12:12
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.4.26)  23 JUN 2022 15:53
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -440,18 +440,6 @@ LaTeX Warning: Label `fig:ass1' multiply defined.
 
 LaTeX Warning: Label `fig:ass1' multiply defined.
 
-
-LaTeX Warning: Label `fig:ass1' multiply defined.
-
-
-LaTeX Warning: Label `fig:ass1' multiply defined.
-
-
-LaTeX Warning: Label `fig:ass1' multiply defined.
-
-
-LaTeX Warning: Label `fig:ass1' multiply defined.
-
 )
 \openout1 = `main.aux'.
 
@@ -559,120 +547,165 @@ Package hyperref Warning: Glyph not defined in PD1 encoding,
 Package hyperref Warning: Glyph not defined in PD1 encoding,
 (hyperref)                removing `\ecircumflex' on input line 27.
 
-<ass3/go.png, id=47, 596.2275pt x 154.5775pt>
-File: ass3/go.png Graphic file (type png)
-<use ass3/go.png>
-Package pdftex.def Info: ass3/go.png  used on input line 31.
-(pdftex.def)             Requested size: 390.0pt x 101.11101pt.
-<ass3/stop.png, id=49, 641.39626pt x 132.495pt>
-File: ass3/stop.png Graphic file (type png)
-<use ass3/stop.png>
-Package pdftex.def Info: ass3/stop.png  used on input line 43.
-(pdftex.def)             Requested size: 390.0pt x 80.56506pt.
-[2 <./ass3/go.png> <./ass3/stop.png>]
-<ass3/track.png, id=59, 684.5575pt x 155.58125pt>
-File: ass3/track.png Graphic file (type png)
-<use ass3/track.png>
-Package pdftex.def Info: ass3/track.png  used on input line 56.
-(pdftex.def)             Requested size: 390.0pt x 88.6395pt.
-<ass3/untrack.png, id=60, 851.18pt x 131.49126pt>
-File: ass3/untrack.png Graphic file (type png)
-<use ass3/untrack.png>
-Package pdftex.def Info: ass3/untrack.png  used on input line 68.
-(pdftex.def)             Requested size: 390.0pt x 60.24794pt.
- [3
+<ass1/code.png, id=52, 755.82375pt x 711.65875pt>
+File: ass1/code.png Graphic file (type png)
+<use ass1/code.png>
+Package pdftex.def Info: ass1/code.png  used on input line 30.
+(pdftex.def)             Requested size: 390.0pt x 367.20876pt.
+[2 <./ass1/code.png>]
 
- <./ass3/track.png> <./ass3/untrack.png>]
-<ass3/rotate.png, id=69, 597.23125pt x 128.48pt>
-File: ass3/rotate.png Graphic file (type png)
-<use ass3/rotate.png>
-Package pdftex.def Info: ass3/rotate.png  used on input line 81.
-(pdftex.def)             Requested size: 390.0pt x 83.89917pt.
-<ass3/result.png, id=70, 715.67375pt x 609.27625pt>
-File: ass3/result.png Graphic file (type png)
-<use ass3/result.png>
-Package pdftex.def Info: ass3/result.png  used on input line 106.
-(pdftex.def)             Requested size: 390.0pt x 332.02573pt.
- [4 <./ass3/rotate.png>] [5 <./ass3/result.png>]
+Package hyperref Warning: Composite letter `\textacute+\ecircumflex'
+(hyperref)                not defined in PD1 encoding,
+(hyperref)                removing `\textacute' on input line 37.
+
 
 Package hyperref Warning: Glyph not defined in PD1 encoding,
-(hyperref)                removing `\dj' on input line 112.
+(hyperref)                removing `\ecircumflex' on input line 37.
+
+
+Package hyperref Warning: Glyph not defined in PD1 encoding,
+(hyperref)                removing `\h' on input line 37.
+
+<ass1/result.png, id=60, 1927.2pt x 1084.05pt>
+File: ass1/result.png Graphic file (type png)
+<use ass1/result.png>
+Package pdftex.def Info: ass1/result.png  used on input line 40.
+(pdftex.def)             Requested size: 390.0pt x 219.37006pt.
+[3
+
+ <./ass1/result.png>]
+
+Package hyperref Warning: Glyph not defined in PD1 encoding,
+(hyperref)                removing `\dj' on input line 54.
 
 
 Package hyperref Warning: Composite letter `\textasciigrave+\ecircumflex'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciigrave' on input line 112.
+(hyperref)                removing `\textasciigrave' on input line 54.
 
 
 Package hyperref Warning: Glyph not defined in PD1 encoding,
-(hyperref)                removing `\ecircumflex' on input line 112.
+(hyperref)                removing `\ecircumflex' on input line 54.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 113--114
+Package hyperref Warning: Glyph not defined in PD1 encoding,
+(hyperref)                removing `\h' on input line 56.
+
+
+Package hyperref Warning: Glyph not defined in PD1 encoding,
+(hyperref)                removing `\ecircumflex' on input line 56.
+
+<ass2/code.png, id=68, 808.01875pt x 821.0675pt>
+File: ass2/code.png Graphic file (type png)
+<use ass2/code.png>
+Package pdftex.def Info: ass2/code.png  used on input line 59.
+(pdftex.def)             Requested size: 390.0pt x 396.30042pt.
+[4
+
+ <./ass2/code.png>]
+<ass2/code1.png, id=75, 754.82pt x 137.51375pt>
+File: ass2/code1.png Graphic file (type png)
+<use ass2/code1.png>
+Package pdftex.def Info: ass2/code1.png  used on input line 66.
+(pdftex.def)             Requested size: 390.0pt x 71.05013pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 70--73
 
  []
 
 
-Package hyperref Warning: Glyph not defined in PD1 encoding,
-(hyperref)                removing `\h' on input line 114.
+Package hyperref Warning: Composite letter `\textacute+\ecircumflex'
+(hyperref)                not defined in PD1 encoding,
+(hyperref)                removing `\textacute' on input line 73.
 
 
 Package hyperref Warning: Glyph not defined in PD1 encoding,
-(hyperref)                removing `\ecircumflex' on input line 114.
+(hyperref)                removing `\ecircumflex' on input line 73.
 
-<ass4/code.png, id=83, 874.26625pt x 723.70375pt>
-File: ass4/code.png Graphic file (type png)
-<use ass4/code.png>
-Package pdftex.def Info: ass4/code.png  used on input line 117.
-(pdftex.def)             Requested size: 390.0pt x 322.83672pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 121--123
+Package hyperref Warning: Glyph not defined in PD1 encoding,
+(hyperref)                removing `\h' on input line 73.
 
- []
+<ass2/result.png, id=76, 1927.2pt x 1084.05pt>
+File: ass2/result.png Graphic file (type png)
+<use ass2/result.png>
+Package pdftex.def Info: ass2/result.png  used on input line 76.
+(pdftex.def)             Requested size: 390.0pt x 219.37006pt.
+[5
 
-<ass4/config.png, id=84, 821.0675pt x 172.645pt>
-File: ass4/config.png Graphic file (type png)
-<use ass4/config.png>
-Package pdftex.def Info: ass4/config.png  used on input line 125.
-(pdftex.def)             Requested size: 390.0pt x 82.00458pt.
+ <./ass2/code1.png> <./ass2/result.png>]
+
+Package hyperref Warning: Glyph not defined in PD1 encoding,
+(hyperref)                removing `\dj' on input line 82.
+
+
+Package hyperref Warning: Composite letter `\textasciigrave+\ecircumflex'
+(hyperref)                not defined in PD1 encoding,
+(hyperref)                removing `\textasciigrave' on input line 82.
+
+
+Package hyperref Warning: Glyph not defined in PD1 encoding,
+(hyperref)                removing `\ecircumflex' on input line 82.
+
+
+Package hyperref Warning: Glyph not defined in PD1 encoding,
+(hyperref)                removing `\h' on input line 83.
+
+
+Package hyperref Warning: Glyph not defined in PD1 encoding,
+(hyperref)                removing `\ecircumflex' on input line 83.
+
+
+Package hyperref Warning: Composite letter `\textacute+\ecircumflex'
+(hyperref)                not defined in PD1 encoding,
+(hyperref)                removing `\textacute' on input line 84.
+
+
+Package hyperref Warning: Glyph not defined in PD1 encoding,
+(hyperref)                removing `\ecircumflex' on input line 84.
+
+
+Package hyperref Warning: Glyph not defined in PD1 encoding,
+(hyperref)                removing `\h' on input line 84.
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 85.
 [6
 
- <./ass4/code.png>]
-<ass4/result.png, id=91, 699.61375pt x 615.29875pt>
-File: ass4/result.png Graphic file (type png)
-<use ass4/result.png>
-Package pdftex.def Info: ass4/result.png  used on input line 133.
-(pdftex.def)             Requested size: 390.0pt x 343.00642pt.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 139.
- [7 <./ass4/config.png> <./ass4/result.png>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 139.
+]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 85.
  (./main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 139.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 139.
-Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 53069919B9916E5E9FF9CF2FDD60EB0B;431.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 85.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 85.
 
+
+Package rerunfilecheck Warning: File `main.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `main.out':
+(rerunfilecheck)             Before: BBB3C063B890A2D8E2AC2DAA4E276B0D;480
+(rerunfilecheck)             After:  6116A588E2A9F5E2D8C0572F3861956E;723.
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 139.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 85.
  ) 
 Here is how much of TeX's memory you used:
- 7720 strings out of 481239
- 117195 string characters out of 5920377
- 373528 words of memory out of 5000000
- 22831 multiletter control sequences out of 15000+600000
+ 7698 strings out of 481239
+ 116816 string characters out of 5920377
+ 373538 words of memory out of 5000000
+ 22813 multiletter control sequences out of 15000+600000
  544142 words of font info for 45 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,8n,42p,265b,312s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 41i,8n,42p,246b,310s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texmf
 /fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/vntex/vnr/vnbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/vntex/vnr
 /vnr12.pfb>
-Output written on main.pdf (7 pages, 260605 bytes).
+Output written on main.pdf (6 pages, 622678 bytes).
 PDF statistics:
- 122 PDF objects out of 1000 (max. 8388607)
+ 113 PDF objects out of 1000 (max. 8388607)
  91 compressed objects within 1 object stream
  25 named destinations out of 1000 (max. 500000)
- 102 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 90 words of extra memory for PDF output out of 10000 (max. 10000000)
 

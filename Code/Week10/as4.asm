@@ -23,10 +23,14 @@ WaitForDis: 	lw $t2, 0($s1) 			# $t2 = [$s1] = DISPLAY_READY
 		beq $t2, $zero, WaitForDis # if $t2 == 0 then Polling 
 		nop 
 		#----------------------------------------------------- 
-Encrypt: 	addi $t0, $t0, 1 # change input key 
+Encrypt: 	addi $t0, $t0, 7 # change input key 
 		#----------------------------------------------------- 
 ShowKey: 	sw $t0, 0($s0) # show key 
 		nop 
+		beq $t0, '{', quit
 		#----------------------------------------------------- 
 		j loop 
 		nop
+quit:
+
+

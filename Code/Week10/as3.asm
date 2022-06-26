@@ -10,16 +10,22 @@
 .eqv WHEREY 	0xffff8040 	# Integer: Current y-location of MarsBot 
 .text 
 main: 
-	jal TRACK 		# draw track line 
-	nop 
-	addi $a0, $zero, 90 	# Marsbot rotates 90* and start 
-running:
+	addi $a0, $zero, 180 
 	jal ROTATE 
-	nop 
+	nop	
 	jal GO 
 	nop
-sleep1: 	addi $v0,$zero,32 # Keep running by sleeping in 1000 ms 
+	addi $v0,$zero,32 
 	li $a0,1000 
+	syscall 
+running:
+	jal TRACK
+	nop
+	addi $a0, $zero, 90 
+	jal ROTATE 
+	nop
+sleep1: addi $v0,$zero,32 # Keep running by sleeping in 1000 ms 
+	li $a0,3000 
 	syscall 
 	jal UNTRACK # keep old track 
 	nop 
@@ -29,33 +35,37 @@ goDOWN: addi $a0, $zero, 180 # Marsbot rotates 180*
 	jal ROTATE 
 	nop 
 sleep2: addi $v0,$zero,32 # Keep running by sleeping in 2000 ms
-	li $a0,2000 
+	li $a0,5000 
 	syscall 
 	jal UNTRACK # keep old track 
 	nop 
 	jal TRACK # and draw new track line 
 	nop 
-goLEFT: addi $a0, $zero, 270 # Marsbot rotates 270*
+goLEFT: addi $a0, $zero, 0 # Marsbot rotates 270*
 	jal ROTATE 
 	nop 
 sleep3: addi $v0,$zero,32 # Keep running by sleeping in 1000 ms 
-	li $a0,1000 
+	li $a0,5000 
 	syscall 
 	jal UNTRACK # keep old track 
 	nop 
 	jal TRACK # and draw new track line
 	nop 
-goASKEW:addi $a0, $zero, 120 # Marsbot rotates 120* 
+goASKEW:addi $a0, $zero, 90 # Marsbot rotates 120* 
 	jal ROTATE 
 	nop 
 sleep4: addi $v0,$zero,32 # Keep running by sleeping in 2000 ms
-	li $a0,2000 
+	li $a0,3000 
 	syscall 
 	jal UNTRACK # keep old track 
 	nop 
 	jal TRACK # and draw new track line
 	nop 
+	jal STOP
+	nop
 end_main: 
+	li $v0, 10
+	syscall
 #----------------------------------------------------------- 
 # GO procedure, to start running
 # param[in] none 
@@ -89,7 +99,7 @@ TRACK: 	li $at, LEAVETRACK # change LEAVETRACK port
 # UNTRACK procedure, to stop drawing line 
 # param[in] none 
 #----------------------------------------------------------- 
-UNTRACK:	li $at, LEAVETRACK # change LEAVETRACK port to 0
+UNTRACK: li $at, LEAVETRACK # change LEAVETRACK port to 0
 	sb $zero, 0($at) # to stop drawing tail
 	nop 
 	jr $ra 
