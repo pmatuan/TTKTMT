@@ -1,5 +1,5 @@
 # Laboratory Exercise 11, Assignment 5
-# Nguyen Thi Hoai Linh - 20205231
+# Phan Minh Anh Tuan - 20205227
 .eqv KEY_CODE 	0xFFFF0004 		# ASCII code from keyboard, 1 byte 
 .eqv KEY_READY 	0xFFFF0000 		# =1 if has a new keycode ? 
 					# Auto clear after lw 
@@ -17,7 +17,7 @@
 loop: 		nop 
 WaitForKey: 	lw $t1, 0($k1) 			# $t1 = [$k1] = KEY_READY 
 		beq $t1, $zero, WaitForKey	# if $t1 == 0 then Polling 
-MakeIntR: 	teqi $t1, 1 # if $t0 = 1 then raise an Interrupt 
+MakeIntR: 	teqi $t1, 1 # if $t1 = 1 then raise an Interrupt 
 		j loop 
 #--------------------------------------------------------------- 
 # Interrupt subroutine 
